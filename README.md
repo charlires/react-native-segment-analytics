@@ -10,6 +10,7 @@ $ npm install react-native-segment-analytics --save
 
 ```
 pod 'Analytics'
+pod 'React', :path => '../node_modules/react-native'
 pod 'SegmentAnalytics', :path => '../node_modules/react-native-segment-analytics/ios'
 ```
 
