@@ -1,4 +1,4 @@
-package com.gbox.segmentanalytics;
+package com.charlires.segmentanalytics;
 
 import android.support.annotation.Nullable;
 import android.util.Log;

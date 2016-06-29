@@ -6,7 +6,7 @@
 //  Copyright © 2016 Golden Owl. All rights reserved.
 //
 
-package com.gbox.segmentanalytics;
+package com.charlires.segmentanalytics;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.JavaScriptModule;
