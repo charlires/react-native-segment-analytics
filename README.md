@@ -3,7 +3,7 @@
 ### Install
  
 ```
-$ npm install react-native-segment-analytics
+$ npm install react-native-segment-analytics --save
 ```
 
 ### IOS (CocoaPods)
@@ -68,3 +68,5 @@ RNSegmentIO.setup("csYA5YIMsbSPeHHZUxCdSwcC4Z6fBVZs");
 ```
 RNSegmentIO.screen("DEMO");
 ```
+
+> **Note:** remember to import it in every file you are going to use it.
