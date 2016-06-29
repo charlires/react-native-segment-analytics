@@ -1,23 +1,25 @@
-# react-native-segment-analytics
+## react-native-segment-analytics
 
-# Install
+### Install
  
 ```
 $ npm install react-native-segment-analytics
 ```
 
-## IOS CocoaPods
+### IOS (CocoaPods)
 
 ```
 pod 'Analytics'
 pod 'SegmentAnalytics', :path => '../node_modules/react-native-segment-analytics/ios'
 ```
 
-### Install the Cocoapods dependencies:
+#### Install the Cocoapods dependencies:
 
+```
 $ pod install
+```
 
-## Android
+### Android
 
 #### Add in android/settings.gradle
 
@@ -26,7 +28,7 @@ include ':react-native-segment-analytics'
 project(':react-native-segment-analytics').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-segment-analytics/android')
 ```
 
-### Add in android/app/build.gradle
+#### Add in android/app/build.gradle
 
 ```
 dependencies {
@@ -48,20 +50,20 @@ protected List<ReactPackage> getPackages() {
 }
 ```
 
-## Usage
+### Usage
 
-### Import the module
+#### Import the module
 ```
 import RNSegmentIO from 'react-native-segment-analytics';
 ```
 
-### Set it up just ones inside your project 
+#### Set it up just ones inside your project 
 
 ```
 RNSegmentIO.setup("csYA5YIMsbSPeHHZUxCdSwcC4Z6fBVZs");
 ```
 
-### Use it
+#### Use it
 
 ```
 RNSegmentIO.screen("DEMO");
