@@ -1,9 +1,12 @@
 {
   "name": "react-native-segment-analytics",
   "description": "Event traking with Segment IO",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "homepage": "https://github.com/charlires/react-native-segment-analytics.git",
-  "repository": "git@github.com:charlires/react-native-segment-analytics.git",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/charlires/react-native-segment-analytics.git"
+  },
   "keywords": [
     "segment-io",
     "analytics",
@@ -18,5 +21,13 @@
     "node": ">=4.0.0"
   },
   "dependencies": {},
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/charlires/react-native-segment-analytics/issues"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Carlos Andonaegui <charlires@gmail.com>"
 }

@@ -60,7 +60,7 @@ import RNSegmentIO from 'react-native-segment-analytics';
 #### Set it up just ones inside your project 
 
 ```
-RNSegmentIO.setup("csYA5YIMsbSPeHHZUxCdSwcC4Z6fBVZs");
+RNSegmentIO.setup("YOUR-SEGMENT-KEY");
 ```
 
 #### Use it
