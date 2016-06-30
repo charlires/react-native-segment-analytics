@@ -10,7 +10,7 @@ $ npm install react-native-segment-analytics --save
 
 ```
 pod 'Analytics'
-pod 'React', :path => '../node_modules/react-native'
+pod 'React', :path => '../node_modules/react-native/React'
 pod 'SegmentAnalytics', :path => '../node_modules/react-native-segment-analytics/ios'
 ```
 
@@ -19,6 +19,10 @@ pod 'SegmentAnalytics', :path => '../node_modules/react-native-segment-analytics
 ```
 $ pod install
 ```
+
+#### Headsup
+
+Make sure that you have `libAnalytics.a` and `libSegmentAnalytics.a` in your *Linked Frameworks and Libraries* you may hve to import them manually some times.
 
 ### Android
 
