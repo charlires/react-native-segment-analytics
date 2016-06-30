@@ -74,7 +74,13 @@ RNSegmentIO.setup("YOUR-SEGMENT-KEY");
 #### Use it
 
 ```
-RNSegmentIO.screen("DEMO");
+RNSegmentIO.setup(configKey: string)
+
+RNSegmentIO.identify(userId: string, traits: Object)
+
+RNSegmentIO.track(trackText: string, properties: Object)
+
+RNSegmentIO.screen(screenName: string, properties: Object)
 ```
 
 > **Note:** remember to import it in every file you are going to use it.
