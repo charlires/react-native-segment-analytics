@@ -46,9 +46,11 @@ dependencies {
 }
 ```
 
-#### Register the module in getPackages of MainActivity.java
+**If you're on RN > 29 apply these changes in `MainApplication.java`, otherwise in `MainActivity.java`**
 
-```
+```java
+import com.charlires.segmentanalytics;
+...
 @Override
 protected List<ReactPackage> getPackages() {
     return Arrays.<ReactPackage>asList(
