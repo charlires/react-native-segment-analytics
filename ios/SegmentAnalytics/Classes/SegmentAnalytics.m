@@ -34,15 +34,13 @@ RCT_EXPORT_METHOD(screen:(NSString*)screenName properties:(NSDictionary *)proper
 -(NSMutableDictionary*) toStringDictionary: (NSDictionary *)properties {
     NSMutableDictionary *stringDictionary = [[NSMutableDictionary alloc] init];
     for (NSString* key in [properties allKeys]) {
-        if ([[properties objectForKey:key] isKindOfClass:[NSString class]]) {
-            id value = [RCTConvert NSString:[properties objectForKey:key]];
-            [stringDictionary setObject:value forKey:[RCTConvert NSString:key]];
-        }
         if ([[properties objectForKey:key] isKindOfClass:[NSMutableDictionary class]]) {
             id value = [self toStringDictionary:[properties objectForKey:key]];
             [stringDictionary setObject:value forKey:[RCTConvert NSString:key]];
+        } else {
+            id value = [properties objectForKey:key];
+            [stringDictionary setObject:value forKey:[RCTConvert NSString:key]];
         }
-
     }
     return stringDictionary;
 }
