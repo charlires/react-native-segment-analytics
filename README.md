@@ -49,7 +49,7 @@ dependencies {
 **If you're on RN > 29 apply these changes in `MainApplication.java`, otherwise in `MainActivity.java`**
 
 ```java
-import com.charlires.segmentanalytics;
+import com.charlires.segmentanalytics.SegmentAnalyticsPackage;
 ...
 @Override
 protected List<ReactPackage> getPackages() {
