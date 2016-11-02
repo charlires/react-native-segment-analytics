@@ -19,5 +19,9 @@ export default {
 
   screen: function (screenName: string, properties: Object) {
     SegmentAnalytics.screen(screenName, properties);
+  },
+
+  alias: function (newId: string) {
+    SegmentAnalytics.alias(newId);
   }
 };
