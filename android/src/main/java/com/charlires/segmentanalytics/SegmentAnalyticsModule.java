@@ -6,12 +6,18 @@ import android.util.Log;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.ReadableMapKeySetIterator;
 import com.facebook.react.bridge.ReadableType;
 import com.segment.analytics.Analytics;
 import com.segment.analytics.Properties;
 import com.segment.analytics.Traits;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 
 public class SegmentAnalyticsModule extends ReactContextBaseJavaModule {
@@ -71,81 +77,96 @@ public class SegmentAnalyticsModule extends ReactContextBaseJavaModule {
             return null;
         }
 
+        Properties properties = new Properties();
+        properties.putAll(this.toMap(readableMap));
+
+        return properties;
+    }
+
+    public Traits toTraits(@Nullable ReadableMap readableMap) {
+        if (readableMap == null) {
+            return null;
+        }
+
+        Traits traits = new Traits();
+        traits.putAll(this.toMap(readableMap));
+
+        return traits;
+    }
+
+    private Map<String, Object> toMap(@Nullable ReadableMap readableMap) {
+        if (readableMap == null) {
+            return null;
+        }
+
         ReadableMapKeySetIterator iterator = readableMap.keySetIterator();
         if (!iterator.hasNextKey()) {
             return null;
         }
 
-        Properties properties = new Properties();
+        Map<String, Object> map = new HashMap<>();
         while (iterator.hasNextKey()) {
             String key = iterator.nextKey();
             ReadableType readableType = readableMap.getType(key);
 
             switch (readableType) {
                 case Null:
-                    properties.putValue(key, null);
+                    map.put(key, null);
                     break;
                 case Boolean:
-                    properties.putValue(key, readableMap.getBoolean(key));
+                    map.put(key, readableMap.getBoolean(key));
                     break;
                 case Number:
                     // Can be int or double.
-                    properties.putValue(key, readableMap.getDouble(key));
+                    map.put(key, readableMap.getDouble(key));
                     break;
                 case String:
-                    properties.putValue(key, readableMap.getString(key));
+                    map.put(key, readableMap.getString(key));
                     break;
                 case Map:
-                    properties.putValue(key, this.toProperties(readableMap.getMap(key)));
+                    map.put(key, this.toMap(readableMap.getMap(key)));
                     break;
                 case Array:
-                    throw new UnsupportedOperationException("Arrays aren't supported yet.");
+                    map.put(key, this.toArray(readableMap.getArray(key)));
+                    break;
                 default:
                     throw new IllegalArgumentException("Could not convert object with key: " + key + ".");
             }
         }
-        return properties;
+        return map;
     }
 
-    public Traits toTraits(@Nullable ReadableMap readableMap) {
-            if (readableMap == null) {
-                return null;
-            }
-
-            ReadableMapKeySetIterator iterator = readableMap.keySetIterator();
-            if (!iterator.hasNextKey()) {
-                return null;
-            }
-
-            Traits traits = new Traits();
-            while (iterator.hasNextKey()) {
-                String key = iterator.nextKey();
-                ReadableType readableType = readableMap.getType(key);
-
-                switch (readableType) {
-                    case Null:
-                        traits.putValue(key, null);
-                        break;
-                    case Boolean:
-                        traits.putValue(key, readableMap.getBoolean(key));
-                        break;
-                    case Number:
-                        // Can be int or double.
-                        traits.putValue(key, readableMap.getDouble(key));
-                        break;
-                    case String:
-                        traits.putValue(key, readableMap.getString(key));
-                        break;
-                    case Map:
-                        traits.putValue(key, this.toTraits(readableMap.getMap(key)));
-                        break;
-                    case Array:
-                        throw new UnsupportedOperationException("Arrays aren't supported yet.");
-                    default:
-                        throw new IllegalArgumentException("Could not convert object with key: " + key + ".");
-                }
-            }
-            return traits;
+    private List<Object> toArray(@Nullable ReadableArray readableArray) {
+        if (readableArray == null) {
+            return null;
         }
 
+        List<Object> list = new ArrayList<>();
+
+        for (int i = 0; i < readableArray.size(); i++) {
+            switch (readableArray.getType(i)) {
+                case Null:
+                    list.add(null);
+                    break;
+                case Boolean:
+                    list.add(readableArray.getBoolean(i));
+                    break;
+                case Number:
+                    list.add(readableArray.getDouble(i));
+                    break;
+                case String:
+                    list.add(readableArray.getString(i));
+                    break;
+                case Map:
+                    list.add(this.toMap(readableArray.getMap(i)));
+                    break;
+                case Array:
+                    list.add(this.toArray(readableArray.getArray(i)));
+                    break;
+                default:
+                    throw new IllegalArgumentException("Could not convert object at index: " + i + ".");
+            }
+        }
+        return list;
+    }
 }
