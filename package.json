@@ -1,7 +1,7 @@
 {
   "name": "react-native-segment-analytics",
   "description": "Event traking with Segment IO",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "homepage": "https://github.com/charlires/react-native-segment-analytics.git",
   "repository": {
     "type": "git",
