@@ -72,6 +72,15 @@ public class SegmentAnalyticsModule extends ReactContextBaseJavaModule {
                 this.toProperties(properties));
     }
 
+    @ReactMethod
+    public void alias(String newId) {
+        Analytics.with(this.getReactApplicationContext()).alias(
+                newId,
+                null
+        );
+
+    }
+
     public Properties toProperties(@Nullable ReadableMap readableMap) {
         if (readableMap == null) {
             return null;

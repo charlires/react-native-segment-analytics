@@ -83,6 +83,8 @@ RNSegmentIO.identify(userId: string, traits: Object)
 RNSegmentIO.track(trackText: string, properties: Object)
 
 RNSegmentIO.screen(screenName: string, properties: Object)
+
+RNSegmentIO.alias(newId: string)
 ```
 
 > **Note:** remember to import it in every file you are going to use it.
