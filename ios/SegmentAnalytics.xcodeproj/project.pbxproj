@@ -219,6 +219,11 @@
 		094964CB1E156E4D0097C117 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+                    "$(inherited)",
+                    "$(SRCROOT)/../../react-native/React/**",
+                    "$(SRCROOT)/../../../ios/**",
+                );
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -228,6 +233,11 @@
 		094964CC1E156E4D0097C117 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+                    "$(inherited)",
+                    "$(SRCROOT)/../../react-native/React/**",
+                    "$(SRCROOT)/../../../ios/**",
+                );
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
