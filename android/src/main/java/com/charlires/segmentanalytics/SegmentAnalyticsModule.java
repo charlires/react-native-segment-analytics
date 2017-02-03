@@ -42,7 +42,6 @@ public class SegmentAnalyticsModule extends ReactContextBaseJavaModule {
         } catch (Exception e) {
             Log.e("SegmentAnalyticsModule", e.getMessage());
         }
-
     }
 
     @ReactMethod
@@ -52,7 +51,6 @@ public class SegmentAnalyticsModule extends ReactContextBaseJavaModule {
                 toTraits(traits),
                 null
         );
-
     }
 
     @ReactMethod
@@ -78,11 +76,14 @@ public class SegmentAnalyticsModule extends ReactContextBaseJavaModule {
                 newId,
                 null
         );
+    }
 
+    private boolean nullOrEmpty(@Nullable ReadableMap readableMap) {
+        return readableMap == null || !readableMap.keySetIterator().hasNextKey();
     }
 
     public Properties toProperties(@Nullable ReadableMap readableMap) {
-        if (readableMap == null) {
+        if (this.nullOrEmpty(readableMap)) {
             return null;
         }
 
@@ -93,7 +94,7 @@ public class SegmentAnalyticsModule extends ReactContextBaseJavaModule {
     }
 
     public Traits toTraits(@Nullable ReadableMap readableMap) {
-        if (readableMap == null) {
+        if (this.nullOrEmpty(readableMap)) {
             return null;
         }
 
@@ -103,15 +104,13 @@ public class SegmentAnalyticsModule extends ReactContextBaseJavaModule {
         return traits;
     }
 
-    private Map<String, Object> toMap(@Nullable ReadableMap readableMap) {
-        if (readableMap == null) {
-            return null;
-        }
-
+    /**
+     * Transforms ReadableMap to java.util.Map object
+     * @param readableMap should not be null or empty
+     * @return Map object of readableMap
+     */
+    private Map<String, Object> toMap (ReadableMap readableMap) {
         ReadableMapKeySetIterator iterator = readableMap.keySetIterator();
-        if (!iterator.hasNextKey()) {
-            return null;
-        }
 
         Map<String, Object> map = new HashMap<>();
         while (iterator.hasNextKey()) {
