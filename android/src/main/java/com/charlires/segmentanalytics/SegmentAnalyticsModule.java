@@ -61,8 +61,8 @@ public class SegmentAnalyticsModule extends ReactContextBaseJavaModule {
     public void track(String trackText, ReadableMap properties) {
         try {
             Analytics.with(this.getReactApplicationContext()).track(
-                    trackText,
-                    this.toProperties(properties)
+                trackText,
+                this.toProperties(properties)
             );
         } catch (Exception e) {
             Log.e("SegmentAnalyticsModule", "Failed to track " + trackText + ". " + e.getMessage());
