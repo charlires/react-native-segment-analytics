@@ -25,7 +25,6 @@ public class SegmentAnalyticsPackage implements ReactPackage {
         return Arrays.<NativeModule>asList(new SegmentAnalyticsModule(reactContext));
     }
 
-    @Override
     public List<Class<? extends JavaScriptModule>> createJSModules() {
         return Collections.emptyList();
     }
