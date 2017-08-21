@@ -91,6 +91,7 @@ public class SegmentAnalyticsModule extends ReactContextBaseJavaModule {
         } catch (Exception e) {
             Log.e("SegmentAnalyticsModule", "Failed to alias " + newId + ". " + e.getMessage());
         }
+    }
 
     private boolean nullOrEmpty(@Nullable ReadableMap readableMap) {
         return readableMap == null || !readableMap.keySetIterator().hasNextKey();
